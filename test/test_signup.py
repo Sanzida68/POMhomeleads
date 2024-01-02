@@ -19,14 +19,14 @@ def driver():
 
 def test_signup(driver):
     signup_page = SignupPage(driver)
-    signup_page.open_page("https://test.usehomeleads.com/")
+    signup_page.open("https://test.usehomeleads.com/")
     signup_page.signup_button()
     signup_page.full("Hillary")
     signup_page.brokerage("Hillary Clinton")
     signup_page.email_address("sanzidaafrin098385@gmail.com")
     signup_page.mobile("6134526784")
     signup_page.address("113 Starrs Rd")
-    signup_page.province()
+    signup_page.province(driver)
     signup_page.city("Yarmouth")
     signup_page.postal_code("B5A 0A1")
     signup_page.agreement()

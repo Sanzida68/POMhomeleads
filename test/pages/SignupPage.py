@@ -12,15 +12,6 @@ class SignupPage:
         self.mobile_name = (By.NAME, "mobileNumber")
         self.address_name = (By.NAME, "address")
         self.province_field_xpath = (By.XPATH, "//div[@class='w-100 position-relative']")
-
-        for x in range(1, 11):
-            self.a = f"//ul[@class='sc-fEyylQ eNreKR']//li[@class='sc-idyqAC cBRBVe'][{x}]"
-            element = driver.find_element(By.XPATH, self.a)
-            text = element.text
-
-            if text == "Nova Scotia":
-                break
-
         self.city_name = (By.NAME, "city")
         self.postal_code_name = (By.NAME, "postalCode")
         self.agree_name = (By.NAME, "agreement")
@@ -32,7 +23,7 @@ class SignupPage:
         self.submit1_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
         self.submit2_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
 
-    def open_page(self, url):
+    def open(self, url):
         self.driver.get(url)
 
     def signup_button(self):
@@ -53,8 +44,17 @@ class SignupPage:
     def address(self, add):
         self.driver.find_element(*self.address_name).send_keys(add)
 
-    def province(self):
+    def province(self, driver):
         self.driver.find_element(*self.province_field_xpath).click()
+
+        for x in range(1, 11):
+            a = f"//ul[@class='sc-fEyylQ eNreKR']//li[@class='sc-idyqAC cBRBVe'][{x}]"
+            element = driver.find_element(By.XPATH, a)
+            c = element.text
+
+            if c == "Nova Scotia":
+                element.click()
+                break
 
     def city(self, c):
         self.driver.find_element(*self.city_name).send_keys(c)
