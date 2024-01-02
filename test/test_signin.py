@@ -1,20 +1,5 @@
 import time
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-
 from test.pages.SignInPage import SigninPage
-
-
-@pytest.fixture()
-def driver():
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.implicitly_wait(10)
-    driver.maximize_window()
-    yield driver
-    driver.close()
-    driver.quit()
 
 
 def test_signin(driver):

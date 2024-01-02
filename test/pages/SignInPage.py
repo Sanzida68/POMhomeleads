@@ -28,3 +28,14 @@ class SigninPage:
 
     def enter_signin(self):
         self.driver.find_element(*self.login_button_xpath).click()
+
+    def for_login(self, url, email, password):
+        self.open_page(url)
+        self.signin_button()
+        self.enter_email(email)
+        self.enter_pass(password)
+        self.enter_signin()
+
+
+
+
