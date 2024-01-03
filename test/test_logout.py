@@ -10,5 +10,5 @@ def test_logout(driver):
 
     logout = LogoutPage(driver)
     logout.click_profile()
-    #logout.click_logout()
+    logout.click_logout()
     time.sleep(3)
