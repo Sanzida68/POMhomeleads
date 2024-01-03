@@ -12,13 +12,6 @@ class SigninPage:
                                              "MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root "
                                              "MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium "
                                              "MuiButton-containedSizeMedium MuiButton-fullWidth mui-style-udkv93']")
-        self.sign_in_button_xpath = (By.XPATH, "//button[@class='sc-gKHVLF bZUscr me-4']")
-
-    def open_page(self, url):
-        self.driver.get(url)
-
-    def signin_button(self):
-        self.driver.find_element(*self.sign_in_button_xpath).click()
 
     def enter_email(self, email):
         self.driver.find_element(*self.email_name).send_keys(email)
@@ -29,9 +22,7 @@ class SigninPage:
     def enter_signin(self):
         self.driver.find_element(*self.login_button_xpath).click()
 
-    def for_login(self, url, email, password):
-        self.open_page(url)
-        self.signin_button()
+    def for_login(self, email, password):
         self.enter_email(email)
         self.enter_pass(password)
         self.enter_signin()

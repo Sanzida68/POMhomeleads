@@ -5,7 +5,6 @@ class SignupPage:
     def __init__(self, driver):
         self.driver = driver
 
-        self.signup_button_xpath = (By.XPATH, "//button[@class='sc-gKHVLF iECspq']")
         self.full_name = (By.NAME, "fullName")
         self.brokerage_name = (By.NAME, "brokerage")
         self.email_name = (By.NAME, "email")
@@ -22,12 +21,6 @@ class SignupPage:
         self.cvc_name = (By.NAME, "cardCvc")
         self.submit1_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
         self.submit2_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
-
-    def open(self, url):
-        self.driver.get(url)
-
-    def signup_button(self):
-        self.driver.find_element(*self.signup_button_xpath).click()
 
     def full(self, fn):
         self.driver.find_element(*self.full_name).send_keys(fn)
@@ -85,14 +78,3 @@ class SignupPage:
 
     def step3(self):
         self.driver.find_element(*self.submit2_xpath).click()
-
-
-
-
-
-
-
-
-
-
-

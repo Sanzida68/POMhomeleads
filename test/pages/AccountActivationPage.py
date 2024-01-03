@@ -9,9 +9,6 @@ class AccountActivePage:
         self.ac_confirm_password_name = (By.NAME, "confirmPassword")
         self.ac_set_button_xpath = (By.XPATH, "//button[@class='sc-hLclGa fyrcZy mt-4']")
 
-    def open_page(self, url):
-        self.driver.get(url)
-
     def set_password(self, ps):
         self.driver.find_element(*self.ac_password_name).send_keys(ps)
 

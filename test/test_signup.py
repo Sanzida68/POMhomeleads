@@ -1,11 +1,12 @@
 import time
+
+from test.pages.HomePage import HomePage
 from test.pages.SignupPage import SignupPage
 
 
 def test_signup(driver):
+    HomePage(driver).for_signup_page("https://test.usehomeleads.com/")
     signup_page = SignupPage(driver)
-    signup_page.open("https://test.usehomeleads.com/")
-    signup_page.signup_button()
     signup_page.full("Hillary")
     signup_page.brokerage("Hillary Clinton")
     signup_page.email_address("sanzidaafrin098385@gmail.com")
