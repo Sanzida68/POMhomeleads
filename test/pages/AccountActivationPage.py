@@ -18,3 +18,9 @@ class AccountActivePage:
     def set_button(self):
         self.driver.find_element(*self.ac_set_button_xpath).click()
 
+    def for_activation(self, url, ps, cp):
+        self.driver.get(url)
+        self.driver.find_element(*self.ac_password_name).send_keys(ps)
+        self.driver.find_element(*self.ac_confirm_password_name).send_keys(cp)
+        #self.driver.find_element(*self.ac_set_button_xpath).click()
+

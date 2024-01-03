@@ -1,16 +1,19 @@
 import time
 
+import pytest
+
+from test.conftest import user1
 from test.pages.HomePage import HomePage
 from test.pages.LogOutPage import LogoutPage
 from test.pages.SignInPage import SigninPage
 
 
-def test_logout(driver):
-    HomePage(driver).for_signin_page("https://test.usehomeleads.com/")
-    signin = SigninPage(driver)
-    signin.for_login("sanzidamaisha2068@gmail.com", "123456")
-    logout = LogoutPage(driver)
-    logout.click_profile()
-    time.sleep(1)
-    logout.click_logout()
-    time.sleep(3)
+@pytest.mark.usefixtures("driver")
+class TestLogout:
+    def test_logout(self, driver):
+        HomePage(driver).for_signin_page(url=user1.Url)
+        signin = SigninPage(driver)
+        signin.for_login(user1.valid_email, user1.valid_password)
+        LogoutPage(driver).logout()
+
+        time.sleep(3)

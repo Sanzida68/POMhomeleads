@@ -22,59 +22,31 @@ class SignupPage:
         self.submit1_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
         self.submit2_xpath = (By.XPATH, "//button[@class='sc-gKHVLF cNEmgP mt-4']")
 
-    def full(self, fn):
+    def for_signin(self, fn, br, email_add, m, add, city, pc, ch, cn, ex, cv):
         self.driver.find_element(*self.full_name).send_keys(fn)
-
-    def brokerage(self, br):
         self.driver.find_element(*self.brokerage_name).send_keys(br)
-
-    def email_address(self, email_add):
         self.driver.find_element(*self.email_name).send_keys(email_add)
-
-    def mobile(self, m):
         self.driver.find_element(*self.mobile_name).send_keys(m)
-
-    def address(self, add):
         self.driver.find_element(*self.address_name).send_keys(add)
-
-    def province(self, driver):
         self.driver.find_element(*self.province_field_xpath).click()
 
         for x in range(1, 11):
             a = f"//ul[@class='sc-fEyylQ eNreKR']//li[@class='sc-idyqAC cBRBVe'][{x}]"
-            element = driver.find_element(By.XPATH, a)
+            element = self.driver.find_element(By.XPATH, a)
             c = element.text
 
             if c == "Nova Scotia":
                 element.click()
                 break
 
-    def city(self, c):
-        self.driver.find_element(*self.city_name).send_keys(c)
-
-    def postal_code(self, pc):
+        self.driver.find_element(*self.city_name).send_keys(city)
         self.driver.find_element(*self.postal_code_name).send_keys(pc)
-
-    def agreement(self):
         self.driver.find_element(*self.agree_name).click()
-
-    def step1(self):
         self.driver.find_element(*self.submit_xpath).click()
-
-    def card_holder(self, ch):
         self.driver.find_element(*self.holder_name).send_keys(ch)
-
-    def card_number(self, cn):
         self.driver.find_element(*self.card_no_name).send_keys(cn)
-
-    def expire(self, ex):
         self.driver.find_element(*self.exp_date_name).send_keys(ex)
-
-    def cvc(self, cv):
         self.driver.find_element(*self.cvc_name).send_keys(cv)
+        #self.driver.find_element(*self.submit1_xpath).click()
+        #self.driver.find_element(*self.submit2_xpath).click()
 
-    def step2(self):
-        self.driver.find_element(*self.submit1_xpath).click()
-
-    def step3(self):
-        self.driver.find_element(*self.submit2_xpath).click()

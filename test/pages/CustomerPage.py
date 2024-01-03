@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 
@@ -62,3 +64,38 @@ class CustomerPage:
 
     def enter_popup(self):
         self.driver.find_element(*self.customer_popup_xpath).click()
+
+    def for_customer_lead(self, url, cus_n, cus_email, cus_phone, cus_address, cus_city, cus_postal, cus_message):
+        self.driver.get(url)
+        self.driver.find_element(*self.customer_button_xpath).click()
+        time.sleep(2)
+        self.driver.find_element(*self.customer_name).send_keys(cus_n)
+        self.driver.find_element(*self.customer_email_name).send_keys(cus_email)
+        self.driver.find_element(*self.customer_phone_name).send_keys(cus_phone)
+        self.driver.find_element(*self.customer_address_name).send_keys(cus_address)
+        self.driver.find_element(*self.customer_city_name).send_keys(cus_city)
+        self.driver.find_element(*self.customer_province_xpath).click()
+
+        for x in range(1, 11):
+            dd = f"//ul[@class='sc-fEyylQ eNreKR']//li[@class='sc-idyqAC cBRBVe'][{x}]"
+            a = self.driver.find_element(By.XPATH, dd)
+            b = a.text
+            print(b)
+
+            if b == "Ontario":
+                a.click()
+                break
+
+        time.sleep(2)
+        self.driver.find_element(*self.customer_postal_code_name).send_keys(cus_postal)
+        self.driver.find_element(*self.customer_message).send_keys(cus_message)
+        self.driver.find_element(*self.customer_submit_xpath).click()
+        self.driver.find_element(*self.customer_popup_xpath).click()
+
+
+
+
+
+
+
+
