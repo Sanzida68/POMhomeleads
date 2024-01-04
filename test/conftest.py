@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -6,7 +8,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture()
 def driver(request):
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--incognito")
+    #chrome_options.add_argument("--enable-features=AllowLocationOnDesktop")
+    time.sleep(2)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
     driver.implicitly_wait(10)
     driver.maximize_window()
     request.cls.driver = driver
@@ -56,11 +62,11 @@ set_pass = TestSetPassword()
 class TestLead:
     cus_url = "https://test.usehomeleads.com/customer-register"
     cus_name = "User"
-    cus_mail = "user23@gmail.com"
-    cus_phone = "1635248764"
-    cus_address = "400 Main St."
-    cus_city = "Yarmouth"
-    cus_postal = "B5A 0A1"
+    cus_mail = "user26@gmail.com"
+    cus_phone = "6132677778"
+    cus_address = "20 5th St,"
+    cus_city = "Courtenay"
+    cus_postal = "V6P 1N1"
     cus_message = "This is test."
 
 
