@@ -1,3 +1,4 @@
+import os
 import time
 
 import pytest
@@ -7,8 +8,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 import configparser
 
+config_path = os.path.abspath('config.ini')
 config = configparser.ConfigParser()
 config.read('config.ini')
+
+print(config.sections())
 
 
 @pytest.fixture()
