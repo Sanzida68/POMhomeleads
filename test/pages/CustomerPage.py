@@ -89,9 +89,9 @@ class CustomerPage:
         time.sleep(2)
         self.driver.find_element(*self.customer_postal_code_name).send_keys(cus_postal)
         self.driver.find_element(*self.customer_message).send_keys(cus_message)
-        self.driver.find_element(*self.customer_submit_xpath).click()
+        #self.driver.find_element(*self.customer_submit_xpath).click()
         time.sleep(2)
-        self.driver.find_element(*self.customer_popup_xpath).click()
+        #self.driver.find_element(*self.customer_popup_xpath).click()
 
 
 
