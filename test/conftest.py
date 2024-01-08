@@ -1,4 +1,3 @@
-import os
 import time
 
 import pytest
@@ -8,9 +7,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 import configparser
 
-config_path = os.path.abspath('config.ini')
+config_path = "C:\\Users\\zDrop-QA-INT-1\\PycharmProjects\\POMhomeleads\\test\\config.ini"
+print(f"Using config file: {config_path}")
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(config_path)
 
 print(config.sections())
 
