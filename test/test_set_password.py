@@ -4,7 +4,6 @@ import pytest
 
 from test.conftest import set_pass
 from test.pages.AccountActivationPage import AccountActivePage
-from test.pages.HomePage import HomePage
 
 
 @pytest.mark.usefixtures("driver")
